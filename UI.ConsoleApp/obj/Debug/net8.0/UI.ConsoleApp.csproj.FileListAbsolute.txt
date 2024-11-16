@@ -1,0 +1,14 @@
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\bin\Debug\net8.0\UI.ConsoleApp.exe
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\bin\Debug\net8.0\UI.ConsoleApp.deps.json
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\bin\Debug\net8.0\UI.ConsoleApp.runtimeconfig.json
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\bin\Debug\net8.0\UI.ConsoleApp.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\bin\Debug\net8.0\UI.ConsoleApp.pdb
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\UI.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\UI.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\UI.ConsoleApp.AssemblyInfo.cs
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\UI.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\UI.ConsoleApp.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\refint\UI.ConsoleApp.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\UI.ConsoleApp.pdb
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\UI.ConsoleApp.genruntimeconfig.cache
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\UI.ConsoleApp\obj\Debug\net8.0\ref\UI.ConsoleApp.dll
