@@ -5,18 +5,20 @@ namespace TaskManager.Models;
 
 public class Category
 {
-    public Category(){}
-
-    public Category(string name, Labor labor){
-        Name = name;
-        if(Labors is not null)
-            Labors.Add(labor);
-    }
+    //Atributos:
     public int? CategoryId {get; set;}
     public string? Name {get; set;}
 
-    public ICollection<Labor>? Labors;
+    public List<Labor>? Labors {get; set;} = [];
 
+    //Métodos:
+    public Category(){}
+
+    public Category(string name){
+        Name = name;
+    }
+
+    
     public override bool Equals(object? obj)
     {
         if(obj == null || obj.GetType() != GetType()){
@@ -33,6 +35,14 @@ public class Category
     public override int GetHashCode()
     {
         return CategoryId.HasValue ? CategoryId.GetHashCode() : 0;
+    }
+
+    public bool Validate() {
+        var isValid =  !string.IsNullOrWhiteSpace(Name);
+        if (!isValid) {
+            throw new Exception("Dados Inválidos");
+        }
+        return true;
     }
 
 }

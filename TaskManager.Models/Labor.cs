@@ -2,22 +2,11 @@ using System;
 
 namespace TaskManager.Models;
 
-public class Labor
+public abstract class Labor
 {
-    public Labor() {}
-    public Labor(string title, string description, DateTime dateCreation, DateTime dateExpiration, string priority, string laborCategoryId, bool status)
-    {
-        Title = title;
-        Description = description;
-        DateCreation = dateCreation;
-        DateExpiration = dateExpiration;
-        Priority = priority;
-        LaborCategoryName = laborCategoryId;
-        Status = status;
-    }
-
+    //Atributos:
     public int? LaborId { get; set; }    
-    public string? Title {get; set;}
+    public string Title {get; set;}
    
     public string? Description { get; set; }
     
@@ -26,12 +15,23 @@ public class Labor
     public DateTime DateExpiration { get; set; }
 
     //Priority vai ser um enum
-    public string? Priority { get; set; }
+    public Priority Priority { get; set; }
 
-    public string? LaborCategoryName { get; set; }
-
+    public Category Category {get; private set;}
     public bool Status { get; set; }
 
+    //Métodos
+    public Labor() {}
+    public Labor(string title, string description, DateTime dateCreation, DateTime dateExpiration, Priority priority, Category category, bool status)
+    {
+        Title = title;
+        Description = description;
+        DateCreation = dateCreation;
+        DateExpiration = dateExpiration;
+        Priority = priority;
+        RegistryCategoryToLabor(category);
+        Status = status;
+    }
     public override bool Equals(object? obj)
     {
         if(obj == null || obj.GetType() != GetType()){
@@ -45,9 +45,23 @@ public class Labor
         );
     }
 
+    public void RegistryCategoryToLabor(Category category) {
+        Category = category;
+        if (!Category.Labors.Contains(this)) {
+            Category.Labors.Add(this);
+        }
+    }
+
     public override int GetHashCode()
     {
         return LaborId.HasValue ? LaborId.GetHashCode() : 0;
     }
+
+    public override string ToString()
+    {
+        return $"[{Title}, {DateExpiration}, -> {Category.Name}]";
+    }
+
+     
 
 }

@@ -1,0 +1,12 @@
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\bin\Debug\net8.0\TaskManager.Models.deps.json
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\bin\Debug\net8.0\TaskManager.Models.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\bin\Debug\net8.0\TaskManager.Models.pdb
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\TaskManager.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\TaskManager.Models.AssemblyInfoInputs.cache
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\TaskManager.Models.AssemblyInfo.cs
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\TaskManager.Models.csproj.CoreCompileInputs.cache
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\TaskManager.Models.sourcelink.json
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\TaskManager.Models.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\refint\TaskManager.Models.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\TaskManager.Models.pdb
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.Models\obj\Debug\net8.0\ref\TaskManager.Models.dll
