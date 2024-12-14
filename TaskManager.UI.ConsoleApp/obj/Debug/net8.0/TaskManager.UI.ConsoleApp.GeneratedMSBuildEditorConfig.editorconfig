@@ -16,6 +16,6 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TaskManager.UI.ConsoleApp
-build_property.ProjectDir = C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\Taskmanager.UI.ConsoleApp\
+build_property.ProjectDir = C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

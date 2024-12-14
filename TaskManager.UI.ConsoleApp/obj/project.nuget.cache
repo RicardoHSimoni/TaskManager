@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cfECNu7tzj8=",
+  "dgSpecHash": "0Xm6ZQ+leKg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ricar\\OneDrive\\Documentos\\GitHub\\TaskManager\\Taskmanager.UI.ConsoleApp\\TaskManager.UI.ConsoleApp.csproj",
+  "projectFilePath": "C:\\Users\\ricar\\OneDrive\\Documentos\\GitHub\\TaskManager\\TaskManager.UI.ConsoleApp\\TaskManager.UI.ConsoleApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ricar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ricar\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
