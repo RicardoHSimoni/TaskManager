@@ -13,16 +13,16 @@ internal class Program
         //);
 
         var category2 = new Category(
-            "Trabalho"
+            "Teste"
         );
 
         //var simpleLabor = new SimpleLabor(
         //    "Estudo", "Estudando EFCore", DateTime.Now.Date, DateTime.Parse("15/12/2024"), Priority.Alta, category, false
         //);
 
-        var recurringLabor = new RecurringLabor(
-            "Chorar", "Chorar no banho", DateTime.Now.Date, DateTime.Parse("14/12/2024"), Priority.Alta, category2, false, Recurence.Diaria, DateTime.Parse("15/12/2024")
-        );
+        //var recurringLabor = new RecurringLabor(
+        //    "Chorar", "Chorar no banho", DateTime.Now.Date, DateTime.Parse("14/12/2024"), Priority.Alta, category2, false, Recurence.Diaria, DateTime.Parse("15/12/2024")
+        //);
 
         /*var simpleLabor = new SimpleLabor(
             "Teste","Testando EFCore",DateTime.Now.Date, DateTime.Parse("12/12/2024"),Priority.Alta,category, false
@@ -32,10 +32,12 @@ internal class Program
 
 
         //context.Categories!.Add(category);
-        //context.Categories!.Add(category2);
+        context.Categories!.Add(category2);
        // context.SimpleLabors!.Add(simpleLabor);
-       context.RecurringLabors!.Add(recurringLabor);
+       //context.RecurringLabors!.Add(recurringLabor);
        
         context.SaveChanges();
+
+        Console.WriteLine("Pronto!");
     }
 }
