@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TaskManager.Models;
 
@@ -22,15 +23,15 @@ public abstract class Labor
 
     //Métodos
     public Labor() {}
-    public Labor(string title, string description, DateTime dateCreation, DateTime dateExpiration, Priority priority, Category category, bool status)
+    public Labor(string title, string description, DateTime dateExpiration, Priority priority, Category category)
     {
         Title = title;
         Description = description;
-        DateCreation = dateCreation;
+        DateCreation = DateTime.Now.Date;
         DateExpiration = dateExpiration;
         Priority = priority;
         RegistryCategoryToLabor(category);
-        Status = status;
+        Status = false;
     }
     public override bool Equals(object? obj)
     {

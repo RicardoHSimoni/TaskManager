@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskManager.UI.Maui")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+33ed87bdce2fcff4294bb85e5b8fd39adb45ceeb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+92be71ed8a5b6416ed37f2d97129208e5a198234")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskManager.UI.Maui")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskManager.UI.Maui")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
