@@ -1,7 +1,7 @@
 ﻿using System;
 using TaskManager.Models;
 using TaskManager.Persistence.Contexts;
-using TaskManager.UI.ConsoleApp.Menus;
+using TaskManager.UI.ConsoleApp;
 
 internal class Program
 {
@@ -11,6 +11,6 @@ internal class Program
 
        menu.ShowMenu();
 
-       
+
     }
 }
