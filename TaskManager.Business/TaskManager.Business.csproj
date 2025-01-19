@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Models\TaskManager.Models.csproj" />
+    <ProjectReference Include="..\TaskManager.Persistence\TaskManager.Persistence.csproj" />
+    <ProjectReference Include="..\TaskManager.Repositories\TaskManager.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>

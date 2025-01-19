@@ -1,15 +1,15 @@
 ﻿using System;
 using TaskManager.Models;
 using TaskManager.Persistence.Contexts;
-using TaskManager.UI.ConsoleApp;
+using TaskManager.UI.ConsoleApp.Menus;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-       Menu menu = new();
+       PrincipalMenu menu = new();
 
-       menu.ShowMenu();
+       menu.ShowPrincipalMenu();
 
 
     }

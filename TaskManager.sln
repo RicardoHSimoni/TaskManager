@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.UI.ConsoleApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.UI.Maui", "TaskManager.UI.Maui\TaskManager.UI.Maui.csproj", "{6B824190-87DD-47A1-BB15-0A85FEB62C46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Repositories", "TaskManager.Repositories\TaskManager.Repositories.csproj", "{4E7FE445-A1EA-40C3-8A9D-3E8D64E3960F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6B824190-87DD-47A1-BB15-0A85FEB62C46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B824190-87DD-47A1-BB15-0A85FEB62C46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B824190-87DD-47A1-BB15-0A85FEB62C46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E7FE445-A1EA-40C3-8A9D-3E8D64E3960F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E7FE445-A1EA-40C3-8A9D-3E8D64E3960F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E7FE445-A1EA-40C3-8A9D-3E8D64E3960F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E7FE445-A1EA-40C3-8A9D-3E8D64E3960F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

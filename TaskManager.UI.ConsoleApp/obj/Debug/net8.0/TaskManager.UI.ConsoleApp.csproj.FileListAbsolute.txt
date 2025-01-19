@@ -145,3 +145,7 @@ C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\
 C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\obj\Debug\net8.0\TaskManager.UI.ConsoleApp.pdb
 C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\obj\Debug\net8.0\TaskManager.UI.ConsoleApp.genruntimeconfig.cache
 C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\obj\Debug\net8.0\ref\TaskManager.UI.ConsoleApp.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\bin\Debug\net8.0\TaskManager.Business.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\bin\Debug\net8.0\TaskManager.Repositories.dll
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\bin\Debug\net8.0\TaskManager.Business.pdb
+C:\Users\ricar\OneDrive\Documentos\GitHub\TaskManager\TaskManager.UI.ConsoleApp\bin\Debug\net8.0\TaskManager.Repositories.pdb

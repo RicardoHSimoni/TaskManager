@@ -1,10 +1,12 @@
 using System;
+using System.Threading.Tasks;
+using TaskManager.Business;
 
-namespace TaskManager.UI.ConsoleApp;
+namespace TaskManager.UI.ConsoleApp.Menus;
 
-public class Menu
+public class PrincipalMenu
 {
-     public void ShowMenu(){
+      public async Task ShowPrincipalMenu(){
         bool continuar = true;
 
         while (continuar)
@@ -25,7 +27,11 @@ public class Menu
                     //AdicionarTarefa();
                     break;
                 case "2":
-                    //gerenciador.ListarTarefas();
+                    var aux =  new CategoryService();
+
+                    await aux.GetCategories();
+                    
+
                     break;
                 case "3":
                     //MarcarTarefaComoConcluida();
@@ -41,5 +47,20 @@ public class Menu
             Console.WriteLine("\nPressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
+    }
+
+    public bool SimpleOrRecurring(){
+        bool continuar = true;
+        string option = "";
+        while(continuar){
+            Console.WriteLine("\nA tarefa será simples ou recorrente? Digite 1 para adicionar recorrência ou 0 para tarefa simples: ");
+            option = Console.ReadLine();
+
+            if(option == "1" || option == "0")
+                continuar = false;
+        }
+        if(option == "1")
+            return true;
+        return false;
     }
 }
