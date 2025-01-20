@@ -13,8 +13,8 @@ public class RecurringLabor: Labor
 
     public RecurringLabor(){}
 
-    public RecurringLabor(string title, string description, DateTime dateCreation, DateTime dateExpiration, 
-                       Priority priority, Category category, bool status, Recurence recurence, DateTime nextExecution)
+    public RecurringLabor(string title, string description, DateTime dateExpiration, 
+                       Priority priority, Category category, Recurence recurence, DateTime nextExecution)
                        : base(title, description,dateExpiration,priority,category)
     {
         Recurence = recurence;

@@ -8,13 +8,12 @@ namespace TaskManager.Business;
 
 public class CategoryService
 {
-    public async Task GetCategories(){
+    public async void ShowCategories(){
         var context = new TaskManagerEFContext();
         var categoryRepository = new GenericRepository<Category>(context);
         var categories = await categoryRepository.GetAllAsync();
         foreach(var element in categories){
             Console.WriteLine(element);
         }
-
     }
 }

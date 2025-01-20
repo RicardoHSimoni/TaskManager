@@ -9,8 +9,8 @@ public class SimpleLabor: Labor
     //Métodos
     public SimpleLabor(){}
 
-    public SimpleLabor(string title, string description, DateTime dateCreation, DateTime dateExpiration, 
-                       Priority priority, Category category, bool status)
+    public SimpleLabor(string title, string description, DateTime dateExpiration, 
+                       Priority priority, Category category)
                        : base(title, description,dateExpiration,priority,category){}
 
     public override string ToString()

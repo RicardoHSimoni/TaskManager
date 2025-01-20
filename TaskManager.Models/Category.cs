@@ -47,7 +47,7 @@ public class Category
 
     public override string ToString()
     {
-        return $"[{Name}]";
+        return $"[{CategoryId},{Name}]";
     }
 
 }

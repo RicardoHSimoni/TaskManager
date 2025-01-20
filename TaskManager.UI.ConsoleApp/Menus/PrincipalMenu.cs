@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using TaskManager.Business;
+using TaskManager.UI.ConsoleApp.Register;
 
 namespace TaskManager.UI.ConsoleApp.Menus;
 
@@ -24,12 +25,13 @@ public class PrincipalMenu
             switch (opcao)
             {
                 case "1":
-                    //AdicionarTarefa();
+                    var aux1 = new RegisterLabor();
+                    aux1.NewLabor();
                     break;
                 case "2":
                     var aux =  new CategoryService();
 
-                    await aux.GetCategories();
+                    aux.ShowCategories();
                     
 
                     break;
@@ -49,7 +51,7 @@ public class PrincipalMenu
         }
     }
 
-    public bool SimpleOrRecurring(){
+    public bool IsSimple(){
         bool continuar = true;
         string option = "";
         while(continuar){
@@ -60,7 +62,7 @@ public class PrincipalMenu
                 continuar = false;
         }
         if(option == "1")
-            return true;
-        return false;
+            return false;
+        return true;
     }
 }
