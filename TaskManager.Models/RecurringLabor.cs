@@ -14,11 +14,23 @@ public class RecurringLabor: Labor
     public RecurringLabor(){}
 
     public RecurringLabor(string title, string description, DateTime dateExpiration, 
-                       Priority priority, Category category, Recurence recurence, DateTime nextExecution)
-                       : base(title, description,dateExpiration,priority,category)
+                       Priority priority, Category category, Recurence recurence)
+                       : base(title, description, dateExpiration,priority,category)
     {
         Recurence = recurence;
-        NextExecution = nextExecution;
+        NextExecution = CalcNextExecution(dateExpiration,recurence);
+    }
+
+    public DateTime CalcNextExecution(DateTime start, Recurence recurence){
+        if(recurence == Recurence.Diaria){
+            return start.AddDays(1);
+        }
+        else if(recurence == Recurence.Semanal){
+            return start.AddDays(7);
+        }
+        else{
+            return start.AddMonths(1);
+        }
     }
 
     public override string ToString()

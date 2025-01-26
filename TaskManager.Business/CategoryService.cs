@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using TaskManager.Models;
 using TaskManager.Persistence.Contexts;
@@ -8,7 +10,7 @@ namespace TaskManager.Business;
 
 public class CategoryService
 {
-    public async void ShowCategories(){
+    public async Task ShowCategories(){
         var context = new TaskManagerEFContext();
         var categoryRepository = new GenericRepository<Category>(context);
         var categories = await categoryRepository.GetAllAsync();
@@ -16,4 +18,13 @@ public class CategoryService
             Console.WriteLine(element);
         }
     }
+
+    public async void RegisterCategory(Category category){
+        var context = new TaskManagerEFContext();
+        var repository = new GenericRepository<Category>(context);
+        await repository.AddAsync(category);
+        Console.WriteLine("Categoria cadastrada com sucesso!");
+    } 
+
+
 }

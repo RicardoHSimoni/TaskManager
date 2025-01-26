@@ -25,7 +25,7 @@ namespace TaskManager.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Labor",
+                name: "RecurringLabor",
                 columns: table => new
                 {
                     LaborId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -36,14 +36,38 @@ namespace TaskManager.Persistence.Migrations
                     DateExpiration = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Priority = table.Column<int>(type: "INTEGER", nullable: false),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Status = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Discriminator = table.Column<string>(type: "TEXT", maxLength: 21, nullable: false)
+                    Status = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Labor", x => x.LaborId);
+                    table.PrimaryKey("PK_RecurringLabor", x => x.LaborId);
                     table.ForeignKey(
-                        name: "FK_Labor_Categories_CategoryId",
+                        name: "FK_RecurringLabor_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SimpleLabor",
+                columns: table => new
+                {
+                    LaborId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    DateCreation = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateExpiration = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Priority = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SimpleLabor", x => x.LaborId);
+                    table.ForeignKey(
+                        name: "FK_SimpleLabor_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
@@ -51,8 +75,13 @@ namespace TaskManager.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Labor_CategoryId",
-                table: "Labor",
+                name: "IX_RecurringLabor_CategoryId",
+                table: "RecurringLabor",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SimpleLabor_CategoryId",
+                table: "SimpleLabor",
                 column: "CategoryId");
         }
 
@@ -60,7 +89,10 @@ namespace TaskManager.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Labor");
+                name: "RecurringLabor");
+
+            migrationBuilder.DropTable(
+                name: "SimpleLabor");
 
             migrationBuilder.DropTable(
                 name: "Categories");

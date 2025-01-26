@@ -1612,8 +1612,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "9.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.0",
+          "Microsoft.EntityFrameworkCore": "9.0.1",
+          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.1",
           "TaskManager.Models": "1.0.0"
         },
         "compile": {
@@ -3112,8 +3112,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "9.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.0",
+          "Microsoft.EntityFrameworkCore": "9.0.1",
+          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.1",
           "TaskManager.Models": "1.0.0"
         },
         "compile": {
@@ -7151,5 +7151,27 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore from 9.0.1 to 9.0.0. Reference the package directly from the project to select a different version. \r\n TaskManager.UI.Maui -> TaskManager.Persistence -> Microsoft.EntityFrameworkCore (>= 9.0.1) \r\n TaskManager.UI.Maui -> Microsoft.EntityFrameworkCore (>= 9.0.0)",
+      "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        "net8.0-windows10.0.19041",
+        "net8.0-windows10.0.19041/win10-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore.Sqlite from 9.0.1 to 9.0.0. Reference the package directly from the project to select a different version. \r\n TaskManager.UI.Maui -> TaskManager.Persistence -> Microsoft.EntityFrameworkCore.Sqlite (>= 9.0.1) \r\n TaskManager.UI.Maui -> Microsoft.EntityFrameworkCore.Sqlite (>= 9.0.0)",
+      "libraryId": "Microsoft.EntityFrameworkCore.Sqlite",
+      "targetGraphs": [
+        "net8.0-windows10.0.19041",
+        "net8.0-windows10.0.19041/win10-x64"
+      ]
+    }
+  ]
 }

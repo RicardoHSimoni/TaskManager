@@ -6,7 +6,7 @@ namespace TaskManager.Models;
 public abstract class Labor
 {
     //Atributos:
-    public int? LaborId { get; set; }    
+    public int LaborId { get; set; }    
     public string Title {get; set;}
    
     public string? Description { get; set; }
@@ -33,30 +33,29 @@ public abstract class Labor
         RegistryCategoryToLabor(category);
         Status = false;
     }
-    public override bool Equals(object? obj)
-    {
-        if(obj == null || obj.GetType() != GetType()){
-            return false;
-        }
-        var other = (Labor)obj;
+    //public override bool Equals(object? obj)
+    //{
+        //if(obj == null || obj.GetType() != GetType()){
+        //    return false;
+        //}
+    //    var other = (Labor)obj;
 
-        return base.Equals(
-            LaborId.HasValue && other.LaborId.HasValue && 
-                LaborId==other.LaborId
-        );
-    }
+    //    return base.Equals(
+    //        LaborId.HasValue && other.LaborId.HasValue && 
+    //            LaborId==other.LaborId
+    //    );
+    //}
 
     public void RegistryCategoryToLabor(Category category) {
-        Category = category;
-        if (!Category.Labors.Contains(this)) {
-            Category.Labors.Add(this);
+        if (!category.Labors.Contains(this)) {
+            category.Labors.Add(this);
         }
     }
 
-    public override int GetHashCode()
-    {
-        return LaborId.HasValue ? LaborId.GetHashCode() : 0;
-    }
+    //public override int GetHashCode()
+    //{
+    //   return LaborId.HasValue ? LaborId.GetHashCode() : 0;
+    //}
 
     public override string ToString()
     {

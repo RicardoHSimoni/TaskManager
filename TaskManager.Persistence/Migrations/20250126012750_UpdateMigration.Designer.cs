@@ -11,14 +11,14 @@ using TaskManager.Persistence.Contexts;
 namespace TaskManager.Persistence.Migrations
 {
     [DbContext(typeof(TaskManagerEFContext))]
-    [Migration("20241214175253_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250126012750_UpdateMigration")]
+    partial class UpdateMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
 
             modelBuilder.Entity("TaskManager.Models.Category", b =>
                 {
@@ -37,7 +37,6 @@ namespace TaskManager.Persistence.Migrations
             modelBuilder.Entity("TaskManager.Models.Labor", b =>
                 {
                     b.Property<int>("LaborId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CategoryId")
@@ -50,11 +49,6 @@ namespace TaskManager.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(21)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Priority")
@@ -71,25 +65,23 @@ namespace TaskManager.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Labor");
+                    b.ToTable((string)null);
 
-                    b.HasDiscriminator().HasValue("Labor");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTpcMappingStrategy();
                 });
 
             modelBuilder.Entity("TaskManager.Models.RecurringLabor", b =>
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
 
-                    b.HasDiscriminator().HasValue("RecurringLabor");
+                    b.ToTable("RecurringLabor", (string)null);
                 });
 
             modelBuilder.Entity("TaskManager.Models.SimpleLabor", b =>
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
 
-                    b.HasDiscriminator().HasValue("SimpleLabor");
+                    b.ToTable("SimpleLabor", (string)null);
                 });
 
             modelBuilder.Entity("TaskManager.Models.Labor", b =>

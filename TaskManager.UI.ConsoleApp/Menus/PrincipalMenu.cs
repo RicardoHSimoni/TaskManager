@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using TaskManager.Business;
+using TaskManager.Models;
+using TaskManager.Persistence.Contexts;
 using TaskManager.UI.ConsoleApp.Register;
 
 namespace TaskManager.UI.ConsoleApp.Menus;
@@ -15,8 +17,8 @@ public class PrincipalMenu
             Console.Clear();
             Console.WriteLine("Gerenciador de Tarefas");
             Console.WriteLine("1. Adicionar Tarefa");
-            Console.WriteLine("2. Listar Tarefas");
-            Console.WriteLine("3. Marcar Tarefa como Concluída");
+            Console.WriteLine("2. Listar Categorias");
+            Console.WriteLine("3. Adicionar categoria");
             Console.WriteLine("4. Sair");
             Console.Write("Escolha uma opção: ");
             
@@ -25,18 +27,21 @@ public class PrincipalMenu
             switch (opcao)
             {
                 case "1":
-                    var aux1 = new RegisterLabor();
-                    aux1.NewLabor();
+                    var register = new RegisterLabor();
+                    register.NewLabor();
                     break;
                 case "2":
                     var aux =  new CategoryService();
 
-                    aux.ShowCategories();
+                    await aux.ShowCategories();
                     
 
                     break;
                 case "3":
-                    //MarcarTarefaComoConcluida();
+                    var aux1 =  new RegisterCategory();
+
+                    aux1.NewCategory();
+                    
                     break;
                 case "4":
                     continuar = false;
@@ -55,10 +60,10 @@ public class PrincipalMenu
         bool continuar = true;
         string option = "";
         while(continuar){
-            Console.WriteLine("\nA tarefa será simples ou recorrente? Digite 1 para adicionar recorrência ou 0 para tarefa simples: ");
+            Console.WriteLine("\nA tarefa será simples ou recorrente? Digite 1 para adicionar recorrência ou 2 para tarefa simples: ");
             option = Console.ReadLine();
 
-            if(option == "1" || option == "0")
+            if(option == "1" || option == "2")
                 continuar = false;
         }
         if(option == "1")
