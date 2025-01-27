@@ -75,6 +75,9 @@ namespace TaskManager.Persistence.Migrations
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
 
+                    b.Property<string>("Recurence")
+                        .HasColumnType("TEXT");
+
                     b.ToTable("RecurringLabor", (string)null);
                 });
 

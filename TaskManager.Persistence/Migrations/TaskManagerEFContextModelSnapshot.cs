@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using TaskManager.Models;
 using TaskManager.Persistence.Contexts;
 
 #nullable disable
@@ -36,9 +37,9 @@ namespace TaskManager.Persistence.Migrations
                     b.Property<int>("LaborId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<Category>("Category")
                         .IsRequired()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("Category");
 
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("TEXT");
@@ -71,6 +72,9 @@ namespace TaskManager.Persistence.Migrations
             modelBuilder.Entity("TaskManager.Models.RecurringLabor", b =>
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
+
+                    b.Property<string>("Recurence")
+                        .HasColumnType("TEXT");
 
                     b.ToTable("RecurringLabor", (string)null);
                 });

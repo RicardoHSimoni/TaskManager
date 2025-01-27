@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using TaskManager.Models;
 
 #nullable disable
 
@@ -32,18 +33,19 @@ namespace TaskManager.Persistence.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    DateCreation = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    //DateCreation = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DateExpiration = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Priority = table.Column<int>(type: "INTEGER", nullable: false),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Status = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Category = table.Column<Category>(type: "INTEGER", nullable: false),
+                    Status = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Recurence =table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RecurringLabor", x => x.LaborId);
                     table.ForeignKey(
                         name: "FK_RecurringLabor_Categories_CategoryId",
-                        column: x => x.CategoryId,
+                        column: x => x.Category,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
@@ -57,10 +59,10 @@ namespace TaskManager.Persistence.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    DateCreation = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    //DateCreation = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DateExpiration = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Priority = table.Column<int>(type: "INTEGER", nullable: false),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Category = table.Column<Category>(type: "INTEGER", nullable: false),
                     Status = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -68,7 +70,7 @@ namespace TaskManager.Persistence.Migrations
                     table.PrimaryKey("PK_SimpleLabor", x => x.LaborId);
                     table.ForeignKey(
                         name: "FK_SimpleLabor_Categories_CategoryId",
-                        column: x => x.CategoryId,
+                        column: x => x.Category,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);

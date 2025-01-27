@@ -33,6 +33,7 @@ public abstract class Labor
         RegistryCategoryToLabor(category);
         Status = false;
     }
+    
     //public override bool Equals(object? obj)
     //{
         //if(obj == null || obj.GetType() != GetType()){

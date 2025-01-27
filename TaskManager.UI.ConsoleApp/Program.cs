@@ -20,7 +20,7 @@ internal class Program
         //Console.WriteLine(dbPath);
         //Console.ReadKey();
       
-        menu.ShowPrincipalMenu();
+        await menu.ShowPrincipalMenu();
 
 
     }
