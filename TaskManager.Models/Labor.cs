@@ -6,7 +6,7 @@ namespace TaskManager.Models;
 public abstract class Labor
 {
     //Atributos:
-    public int LaborId { get; set; }    
+    public int? LaborId { get; set; }    
     public string Title {get; set;}
    
     public string? Description { get; set; }
@@ -30,6 +30,7 @@ public abstract class Labor
         DateCreation = DateTime.Now.Date;
         DateExpiration = dateExpiration;
         Priority = priority;
+        Category = category;
         RegistryCategoryToLabor(category);
         Status = false;
     }

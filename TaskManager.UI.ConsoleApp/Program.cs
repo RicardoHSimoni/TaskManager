@@ -13,12 +13,12 @@ internal class Program
        PrincipalMenu menu = new();
 
         
-        //string diretorio = Directory.GetParent(caminhoArquivo).FullName;
-
-        //Console.WriteLine("Diretório do arquivo: " + diretorio);
-
-        //Console.WriteLine(dbPath);
-        //Console.ReadKey();
+        //var context = new TaskManagerEFContext();
+        //var category = context.Categories!.Find(1);
+        //var recurringLabor = new RecurringLabor("Teste 2","Tá dificil", DateTime.Parse("28/01/2025"),Priority.Alta,category,Recurence.Diaria);
+        //context.RecurringLabors!.Add(recurringLabor);
+        //context.SaveChanges();
+        //Console.WriteLine("taref cadastrada com sucesso");
       
         await menu.ShowPrincipalMenu();
 

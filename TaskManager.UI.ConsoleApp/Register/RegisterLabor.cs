@@ -16,6 +16,7 @@ public class RegisterLabor
     {
         var aux = new PrincipalMenu();
         var register = new LaborService();
+        var context = new TaskManagerEFContext();
 
         //Coleta de dados base
         Console.WriteLine("Informe o nome da tarefa: ");
@@ -25,13 +26,20 @@ public class RegisterLabor
         Console.WriteLine("Informe a data(formato DD/MM/YYYY): ");
         DateTime date = DateTime.Parse(Console.ReadLine()).Date;
         Priority priority = GetPriority();
-        Category category = GetCategory().Result;
+        /*Eu tentei durante dias fazer um método separado que retornasse apenas a categoria escolhida 
+        mas simplesmente QUEBRAVA o bd, então essa foi a opção que restou*/
+        Console.WriteLine("Digite o Id da Categoria para incluir a tarefa: ");
+        int iD = int.Parse(Console.ReadLine());
+        var category = context.Categories!.Find(iD);
         Console.WriteLine("Categoria escolhida: " + category);
 
         if (aux.IsSimple())
         {
             var simpleLabor = new SimpleLabor(title, description, date, priority, category);
-            register.RegisterSimpleLabor(simpleLabor);
+            //register.RegisterSimpleLabor(simpleLabor);
+            context.SimpleLabors!.Add(simpleLabor);
+            context.SaveChanges();
+           
         }
         else
         {
@@ -60,18 +68,6 @@ public class RegisterLabor
         }
     }
 
-    public async Task<Category> GetCategory(){
-        var service = new CategoryService();
-        await service.ShowCategories();
-        Console.WriteLine("Digite o Id da Categoria para incluir a tarefa: ");
-        int iD = int.Parse(Console.ReadLine());
-
-        var category = new Category();
-        var context = new TaskManagerEFContext();
-        var categoryRepository = new GenericRepository<Category>(context);
-        category = await categoryRepository.GetByIdAsync(iD);
-        return category;
-    }
 
     public Recurence GetRecurence(){
         while(true){

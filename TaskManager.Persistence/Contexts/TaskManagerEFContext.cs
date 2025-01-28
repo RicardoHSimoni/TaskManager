@@ -27,13 +27,13 @@ public class TaskManagerEFContext : DbContext
         }
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
         // base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Labor>().UseTpcMappingStrategy();
-        modelBuilder.Entity<SimpleLabor>() .ToTable("SimpleLabor");
-        modelBuilder.Entity<RecurringLabor>().ToTable("RecurringLabor");
+        //modelBuilder.Entity<Labor>().UseTpcMappingStrategy();
+        //modelBuilder.Entity<SimpleLabor>() .ToTable("SimpleLabor");
+        //modelBuilder.Entity<RecurringLabor>().ToTable("RecurringLabor");
         
-    }
+    //}
 
 }

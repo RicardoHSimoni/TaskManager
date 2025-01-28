@@ -11,7 +11,7 @@ using TaskManager.Persistence.Contexts;
 namespace TaskManager.Persistence.Migrations
 {
     [DbContext(typeof(TaskManagerEFContext))]
-    [Migration("20250123145415_InitialMigration")]
+    [Migration("20250128002703_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -52,6 +52,11 @@ namespace TaskManager.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Priority")
                         .HasColumnType("INTEGER");
 
@@ -66,26 +71,37 @@ namespace TaskManager.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable((string)null);
+                    b.ToTable("Labor");
 
-                    b.UseTpcMappingStrategy();
+                    b.HasDiscriminator().HasValue("Labor");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("TaskManager.Models.RecurringLabor", b =>
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
 
-                    b.Property<string>("Recurence")
+                    b.Property<DateTime>("NextExecution")
                         .HasColumnType("TEXT");
 
-                    b.ToTable("RecurringLabor", (string)null);
+                    b.Property<int>("Recurence")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("RecurringLaborId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasDiscriminator().HasValue("RecurringLabor");
                 });
 
             modelBuilder.Entity("TaskManager.Models.SimpleLabor", b =>
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
 
-                    b.ToTable("SimpleLabor", (string)null);
+                    b.Property<int?>("SimpleLaborId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasDiscriminator().HasValue("SimpleLabor");
                 });
 
             modelBuilder.Entity("TaskManager.Models.Labor", b =>

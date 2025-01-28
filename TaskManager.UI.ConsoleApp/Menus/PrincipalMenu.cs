@@ -60,10 +60,10 @@ public class PrincipalMenu
         bool continuar = true;
         string option = "";
         while(continuar){
-            Console.WriteLine("\nA tarefa será simples ou recorrente? Digite 1 para adicionar recorrência ou 2 para tarefa simples: ");
+            Console.WriteLine("\nA tarefa será simples ou recorrente? Digite 1 para adicionar recorrência ou 0 para tarefa simples: ");
             option = Console.ReadLine();
 
-            if(option == "1" || option == "2")
+            if(option == "1" || option == "0")
                 continuar = false;
         }
         if(option == "1")

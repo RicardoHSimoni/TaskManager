@@ -13,7 +13,6 @@ public class LaborService
         var context = new TaskManagerEFContext();
         var repository = new GenericRepository<SimpleLabor>(context);
         await repository.AddAsync(simpleLabor);
-        //simpleLabor.Validate();
         Console.WriteLine("Tarefa Cadastrada com sucesso!");
     }
 

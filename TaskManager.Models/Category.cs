@@ -6,7 +6,7 @@ namespace TaskManager.Models;
 public class Category
 {
     //Atributos:
-    public int CategoryId {get; set;}
+    public int? CategoryId {get; set;}
     public string? Name {get; set;}
 
     public List<Labor>? Labors {get; set;} = [];

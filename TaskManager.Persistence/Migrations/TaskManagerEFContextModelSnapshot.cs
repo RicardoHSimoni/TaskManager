@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TaskManager.Models;
 using TaskManager.Persistence.Contexts;
 
 #nullable disable
@@ -35,11 +34,11 @@ namespace TaskManager.Persistence.Migrations
             modelBuilder.Entity("TaskManager.Models.Labor", b =>
                 {
                     b.Property<int>("LaborId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<Category>("Category")
-                        .IsRequired()
-                        .HasColumnType("Category");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("TEXT");
@@ -48,6 +47,11 @@ namespace TaskManager.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Priority")
@@ -64,26 +68,37 @@ namespace TaskManager.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable((string)null);
+                    b.ToTable("Labor");
 
-                    b.UseTpcMappingStrategy();
+                    b.HasDiscriminator().HasValue("Labor");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("TaskManager.Models.RecurringLabor", b =>
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
 
-                    b.Property<string>("Recurence")
+                    b.Property<DateTime>("NextExecution")
                         .HasColumnType("TEXT");
 
-                    b.ToTable("RecurringLabor", (string)null);
+                    b.Property<int>("Recurence")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("RecurringLaborId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasDiscriminator().HasValue("RecurringLabor");
                 });
 
             modelBuilder.Entity("TaskManager.Models.SimpleLabor", b =>
                 {
                     b.HasBaseType("TaskManager.Models.Labor");
 
-                    b.ToTable("SimpleLabor", (string)null);
+                    b.Property<int?>("SimpleLaborId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasDiscriminator().HasValue("SimpleLabor");
                 });
 
             modelBuilder.Entity("TaskManager.Models.Labor", b =>

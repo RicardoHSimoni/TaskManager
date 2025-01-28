@@ -5,9 +5,9 @@ namespace TaskManager.Models;
 public class RecurringLabor: Labor
 {
     //Propriedades:
-    Recurence Recurence {get;set;}
+    public Recurence Recurence {get;set;}
 
-    DateTime NextExecution{get; set;}
+    public DateTime NextExecution{get; set;}
 
     //Métodos:
 
