@@ -9,15 +9,13 @@ namespace TaskManager.Business;
 
 public class LaborService
 {
-    public async void RegisterSimpleLabor(SimpleLabor simpleLabor){
-        var context = new TaskManagerEFContext();
+    public async void RegisterSimpleLabor(TaskManagerEFContext context, SimpleLabor simpleLabor){
         var repository = new GenericRepository<SimpleLabor>(context);
         await repository.AddAsync(simpleLabor);
         Console.WriteLine("Tarefa Cadastrada com sucesso!");
     }
 
-    public async void RegisterRecurringLabor(RecurringLabor recurringLabor){
-        var context = new TaskManagerEFContext();
+    public async void RegisterRecurringLabor(TaskManagerEFContext context, RecurringLabor recurringLabor){
         var repository = new GenericRepository<RecurringLabor>(context);
         await repository.AddAsync(recurringLabor);
         Console.WriteLine("Tarefa Cadastrada com sucesso!");

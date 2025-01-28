@@ -26,26 +26,19 @@ public class RegisterLabor
         Console.WriteLine("Informe a data(formato DD/MM/YYYY): ");
         DateTime date = DateTime.Parse(Console.ReadLine()).Date;
         Priority priority = GetPriority();
-        /*Eu tentei durante dias fazer um método separado que retornasse apenas a categoria escolhida 
-        mas simplesmente QUEBRAVA o bd, então essa foi a opção que restou*/
-        Console.WriteLine("Digite o Id da Categoria para incluir a tarefa: ");
-        int iD = int.Parse(Console.ReadLine());
-        var category = context.Categories!.Find(iD);
+        Category category = GetCategoryAsync(context).Result;
         Console.WriteLine("Categoria escolhida: " + category);
 
         if (aux.IsSimple())
         {
             var simpleLabor = new SimpleLabor(title, description, date, priority, category);
-            //register.RegisterSimpleLabor(simpleLabor);
-            context.SimpleLabors!.Add(simpleLabor);
-            context.SaveChanges();
-           
+            register.RegisterSimpleLabor(context, simpleLabor);
         }
         else
         {
             Recurence recurence = GetRecurence();
             var recurringLabor = new RecurringLabor(title, description, date, priority, category, recurence);
-            register.RegisterRecurringLabor(recurringLabor);
+            register.RegisterRecurringLabor(context, recurringLabor);
 
         }
     }
@@ -65,6 +58,27 @@ public class RegisterLabor
                     Console.WriteLine("Opção inválida");
                 break;
             }
+        }
+    }
+
+    public async Task<Category> GetCategoryAsync(TaskManagerEFContext context){
+        var service = new CategoryService();
+        var repository = new GenericRepository<Category>(context);
+        int id;
+        await service.ShowCategories();
+        while(true){
+            Console.WriteLine("Digite o Id da Categoria para incluir a tarefa: ");
+            string input = Console.ReadLine();
+            if(!string.IsNullOrWhiteSpace(input)){
+                id = int.Parse(input);
+                var category = await repository.GetByIdAsync(id);
+                if(category != null)
+                    return category;
+                else
+                    Console.WriteLine("Categoria inválida. Tente novamente");
+            }
+            else
+                Console.WriteLine("Entrada inválida");
         }
     }
 
