@@ -6,13 +6,16 @@ namespace TaskManager.UI.ConsoleApp.Register;
 
 public class RegisterCategory
 {
-    public void NewCategory(){
+    public Category NewCategory(){
         var category = new Category();
         var service = new CategoryService();
-        Console.WriteLine("Informe o nome da nova categoria: ");
-        category.Name = Console.ReadLine();
-        if(category.Validate()){
-            service.RegisterCategory(category);
+        while(true){
+            Console.WriteLine("Informe o nome da nova categoria: ");
+            category.Name = Console.ReadLine();
+            if(category.Validate()){
+                service.RegisterCategory(category);
+                return category;
+            }
         }
     }
 }

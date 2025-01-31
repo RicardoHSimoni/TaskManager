@@ -61,7 +61,9 @@ public abstract class Labor
 
     public override string ToString()
     {
-        return $"[{Title}, {DateExpiration}, -> {Category.Name}]";
+        //var categoryName = Category?.Name ?? "Categoria desconhecida"; 
+        var category = this.Category;
+        return $"[{LaborId},{Title}, {DateExpiration}, -> {category.Name}]";
     }
 
      

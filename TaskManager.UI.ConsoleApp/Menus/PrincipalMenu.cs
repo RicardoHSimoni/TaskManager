@@ -17,7 +17,7 @@ public class PrincipalMenu
             Console.Clear();
             Console.WriteLine("Gerenciador de Tarefas");
             Console.WriteLine("1. Adicionar Tarefa");
-            Console.WriteLine("2. Listar Categorias");
+            Console.WriteLine("2. Listar Tarefas");
             Console.WriteLine("3. Adicionar categoria");
             Console.WriteLine("4. Sair");
             Console.Write("Escolha uma opção: ");
@@ -31,9 +31,9 @@ public class PrincipalMenu
                     register.NewLabor();
                     break;
                 case "2":
-                    var aux =  new CategoryService();
+                    var view =  new ViewMenu();
 
-                    await aux.ShowCategories();
+                    await view.ShowViewMenu();
                     
 
                     break;
@@ -56,18 +56,5 @@ public class PrincipalMenu
         }
     }
 
-    public bool IsSimple(){
-        bool continuar = true;
-        string option = "";
-        while(continuar){
-            Console.WriteLine("\nA tarefa será simples ou recorrente? Digite 1 para adicionar recorrência ou 0 para tarefa simples: ");
-            option = Console.ReadLine();
-
-            if(option == "1" || option == "0")
-                continuar = false;
-        }
-        if(option == "1")
-            return false;
-        return true;
-    }
+   
 }
