@@ -1,5 +1,9 @@
 using System;
+using TaskManager.Business;
 using TaskManager.Models;
+using TaskManager.Persistence.Contexts;
+using TaskManager.Repositories;
+using TaskManager.UI.ConsoleApp.Register;
 
 namespace TaskManager.UI.ConsoleApp.GenericMethods;
 
@@ -56,5 +60,28 @@ public class Utils
         }
     }
 
-    
+    public async Task<Category> GetCategoryAsync(TaskManagerEFContext context){
+        var service = new CategoryService();
+        var repository = new GenericRepository<Category>(context);
+        int id;
+        while(true){
+            await service.ShowCategories();
+            Console.WriteLine("Digite o Id da Categoria para incluir a tarefa ou digite 0 para cadastrar uma nova: ");
+            string input = Console.ReadLine();
+            if(input == "0"){
+                var registerCategory =  new RegisterCategory();
+                registerCategory.NewCategory();
+            }
+            else if(!string.IsNullOrWhiteSpace(input)){
+                id = int.Parse(input);
+                var category = await repository.GetByIdAsync(id);
+                if(category != null)
+                    return category;
+                else
+                    Console.WriteLine("Categoria inválida. Tente novamente");
+            }
+            else
+                Console.WriteLine("Entrada inválida");
+        }
+    }
 }

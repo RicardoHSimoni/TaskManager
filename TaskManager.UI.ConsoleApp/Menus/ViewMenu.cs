@@ -6,6 +6,7 @@ using TaskManager.Persistence.Contexts;
 using TaskManager.Repositories;
 using TaskManager.UI.ConsoleApp.GenericMethods;
 using TaskManager.UI.ConsoleApp.Register;
+using TaskManager.UI.ConsoleApp.Update;
 
 namespace TaskManager.UI.ConsoleApp.Menus;
 
@@ -17,9 +18,10 @@ public class ViewMenu
         var utils = new Utils();
         var context = new TaskManagerEFContext();
         var repository = new GenericRepository<Labor>(context);
-        var labors = await repository.GetAllAsync();
+       
         //context.Entry(labor).Reference(l => l.Category).Load();
         while(continuar){
+            var labors = await repository.GetAllAsync();
             Console.WriteLine("Menu de visualização");
             Console.WriteLine("1. Listar por status");
             Console.WriteLine("2. Listar por prioridade");
@@ -51,8 +53,7 @@ public class ViewMenu
                         }
                     }
                     else Console.WriteLine("Opção inválida. Operação cancelada");
-                    Console.WriteLine("\nPressione qualquer tecla para continuar...");
-                    Console.ReadKey();
+
                     break;
                 case "2":
                 var priority = utils.GetPriority();
@@ -62,19 +63,15 @@ public class ViewMenu
                         Console.WriteLine(labor);
                     }
                 }
-                Console.WriteLine("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
                     break;
                 case "3":
-                var register = new RegisterLabor();
-                var category = register.GetCategoryAsync(context).Result;
+                var category = utils.GetCategoryAsync(context).Result;
                 foreach(var labor in labors){
                     context.Entry(labor).Reference(l => l.Category).Load();
                     if(labor.Category == category)
                         Console.WriteLine(labor);
                 }
-                Console.WriteLine("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
+          
                     break;
                 case "4":
                 Console.WriteLine("Digite a data de inicio da busca: ");
@@ -88,16 +85,12 @@ public class ViewMenu
                     }
                         
                 }
-                Console.WriteLine("\nPressione qualquer tecla para continuar...");
-                Console.ReadKey();
                     break;
                 case "5":
                     foreach(var labor in labors){
                         context.Entry(labor).Reference(l => l.Category).Load();
                         Console.WriteLine(labor);
                     }
-                    Console.WriteLine("\nPressione qualquer tecla para continuar...");
-                    Console.ReadKey();
                     break;
                 case "6":
                 var categoryService = new CategoryService();
@@ -113,10 +106,12 @@ public class ViewMenu
                     break;
             }
 
-            Console.WriteLine("Digite o id de uma tarefa para abrir a visão detalhada ou digite 0 para sair: ");
-            string id = Console.ReadLine();
-            if(id != "0" && !string.IsNullOrWhiteSpace(id)){
-                await DetailedView(int.Parse(id));
+            if(opcao != "6" && opcao != "7"){ 
+                Console.WriteLine("Digite o id de uma tarefa para abrir a visão detalhada ou digite 0 para sair: ");
+                string id = Console.ReadLine();
+                if(id != "0" && !string.IsNullOrWhiteSpace(id)){
+                    await DetailedView(int.Parse(id));
+                }
             }
 
 
@@ -135,9 +130,33 @@ public class ViewMenu
         Console.WriteLine("Prioridade: "+ labor.Priority);
         Console.WriteLine("Categoria: "+ labor.Category);
         Console.WriteLine("Status: "+ labor.Status);
+        if(labor is RecurringLabor){
+            var recurringLabor = labor as RecurringLabor;
+            Console.WriteLine("Recorrência: "+ recurringLabor.Recurence);
+        }
 
-        Console.WriteLine("\nPressione qualquer tecla para continuar...");
-        Console.ReadKey();
+        Console.WriteLine("Pressione 0 para sair...");
+        Console.WriteLine("Pressione 1 para atualizar a tarefa...");
+        Console.WriteLine("Pressione 2 para excluir a tarefa...");
+        string opcao = Console.ReadLine();
+        switch(opcao){
+            case "0":
+                break;
+            case "1":
+                var update = new UpdateLabor();
+                await update.Update(context, labor);
+                break;
+            case "2":
+                await repository.DeleteAsync(labor);
+                Console.WriteLine("Tarefa excluída com sucesso.");
+                Console.WriteLine("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+                break;
+            default:
+                Console.WriteLine("Opção inválida.");
+                break;
+        }
+
 
 
     }

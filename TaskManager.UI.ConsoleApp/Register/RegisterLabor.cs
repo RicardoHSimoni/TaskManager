@@ -27,7 +27,7 @@ public class RegisterLabor
         Console.WriteLine("Informe a data(formato DD/MM/YYYY): ");
         DateTime date = DateTime.Parse(Console.ReadLine()).Date;
         Priority priority = utils.GetPriority();
-        Category category = GetCategoryAsync(context).Result;
+        Category category = utils.GetCategoryAsync(context).Result;
         Console.WriteLine("Categoria escolhida: " + category);
 
         if (utils.IsSimple())
@@ -44,30 +44,7 @@ public class RegisterLabor
         }
     }
 
-    public async Task<Category> GetCategoryAsync(TaskManagerEFContext context){
-        var service = new CategoryService();
-        var repository = new GenericRepository<Category>(context);
-        int id;
-        while(true){
-            await service.ShowCategories();
-            Console.WriteLine("Digite o Id da Categoria para incluir a tarefa ou digite 0 para cadastrar uma nova: ");
-            string input = Console.ReadLine();
-            if(input == "0"){
-                var registerCategory =  new RegisterCategory();
-                registerCategory.NewCategory();
-            }
-            else if(!string.IsNullOrWhiteSpace(input)){
-                id = int.Parse(input);
-                var category = await repository.GetByIdAsync(id);
-                if(category != null)
-                    return category;
-                else
-                    Console.WriteLine("Categoria inválida. Tente novamente");
-            }
-            else
-                Console.WriteLine("Entrada inválida");
-        }
-    }
+  
    
 
    
